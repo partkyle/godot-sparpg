@@ -1,9 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://vbpgk5xc4kt2"]
+[gd_scene load_steps=50 format=3 uid="uid://vbpgk5xc4kt2"]
 
 [ext_resource type="Script" uid="uid://4tbts5iaml8k" path="res://entities/planet/planet.gd" id="1_80nbo"]
 [ext_resource type="Shader" uid="uid://cmonbjnvu1osx" path="res://entities/planet/planet.gdshader" id="2_feb5d"]
 [ext_resource type="Texture2D" uid="uid://cd8jbgjrnw6jo" path="res://entities/planet/assets/TexturesForPlanets-TerrestrialWorldsPack/Terrestrial1.png" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b6oyi1p2polxr" path="res://entities/planet/assets/bloodshot-eyes.png" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://0s4pkcqm6vyr" path="res://n64_master_hand_smooth_ver/scene.gltf" id="4_vef74"]
 [ext_resource type="Script" uid="uid://bmganatsi74u5" path="res://entities/player/player.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://1j332kbulav0" path="res://mouse_handler.gd" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://cdmhq7sxrmkuv" path="res://ui/ui.gd" id="6_ryrav"]
@@ -154,12 +155,12 @@ material = SubResource("StandardMaterial3D_7sc4i")
 environment = SubResource("Environment_eow3j")
 
 [node name="Planet" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(-0.773404, 0, -0.633913, 0, 1, 0, 0.633913, 0, -0.773404, -1.91784, 0, 1.31947)
+transform = Transform3D(-0.773403, 0, -0.633914, 0, 1, 0, 0.633914, 0, -0.773403, -1.91784, 0, 1.31947)
 script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(0.706031, 0, 0.685476, 0, 1, 0, -0.685476, 0, 0.706031, 0, 0, 0)
+transform = Transform3D(-0.866224, 0, 0.465719, 0, 1, 0, -0.465719, 0, -0.866224, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -198,13 +199,19 @@ mesh = SubResource("BoxMesh_vef74")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Planet/Area3D"]
 shape = SubResource("SphereShape3D_fc0e3")
 
+[node name="Sketchfab_Scene" parent="Planet" instance=ExtResource("4_vef74")]
+transform = Transform3D(-0.318866, 0, 0.0849986, 0, 0.33, 0, -0.0849986, 0, -0.318866, 0.513393, -0.45235, -0.620689)
+
+[node name="Sketchfab_Scene2" parent="Planet" instance=ExtResource("4_vef74")]
+transform = Transform3D(0.318866, 0, 0.0849986, 0, 0.33, 0, 0.0849986, 0, -0.318866, -0.379856, -0.45235, -0.813057)
+
 [node name="Planet2" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.32246)
 script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(0.706031, 0, 0.685476, 0, 1, 0, -0.685476, 0, 0.706031, 0, 0, 0)
+transform = Transform3D(-0.866224, 0, 0.465719, 0, 1, 0, -0.465719, 0, -0.866224, 0, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -241,7 +248,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(0.706031, 0, 0.685476, 0, 1, 0, -0.685476, 0, 0.706031, 0, 0, 0)
+transform = Transform3D(-0.866224, 0, 0.465719, 0, 1, 0, -0.465719, 0, -0.866224, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -279,7 +286,7 @@ rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(-0.554101, 0, -0.836606, 0, 1, 0, 0.836606, 0, -0.554101, 0, 0, 0)
+transform = Transform3D(-0.408183, 0, 0.916849, 0, 1, 0, -0.916849, 0, -0.408183, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
