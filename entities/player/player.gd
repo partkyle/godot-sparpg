@@ -9,12 +9,10 @@ const EPSILON := 0.005
 @export var rotation_speed := Vector2(0.02, 0.02)
 @export var stick_rotation_speed := rotation_speed * 2.0
 
-@onready var laser: RayCast3D = $Laser
 
 func _physics_process(delta: float) -> void:	
-	if Input.is_action_just_pressed("shoot"):
-		if laser.is_colliding():
-			laser.get_collider().get_parent().queue_free()
+	if Input.is_action_pressed("shoot"):
+		Laser.create(get_tree().root, self.global_position, self.velocity, self.basis)
 	
 	var direction = Input.get_vector("move_left", "move_right", "move_down", "move_up")
 

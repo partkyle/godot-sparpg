@@ -160,7 +160,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(-0.866224, 0, 0.465719, 0, 1, 0, -0.465719, 0, -0.866224, 0, 0, 0)
+transform = Transform3D(0.549528, 0, 0.823917, 0, 1, 0, -0.823917, 0, 0.549528, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -211,7 +211,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(-0.866224, 0, 0.465719, 0, 1, 0, -0.465719, 0, -0.866224, 0, 0, 0)
+transform = Transform3D(0.549528, 0, 0.823917, 0, 1, 0, -0.823917, 0, 0.549528, 0, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -248,7 +248,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(-0.866224, 0, 0.465719, 0, 1, 0, -0.465719, 0, -0.866224, 0, 0, 0)
+transform = Transform3D(0.549528, 0, 0.823917, 0, 1, 0, -0.823917, 0, 0.549528, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -286,7 +286,7 @@ rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(-0.408183, 0, 0.916849, 0, 1, 0, -0.916849, 0, -0.408183, 0, 0, 0)
+transform = Transform3D(0.664378, 0, -0.768486, 0, 1, 0, 0.768486, 0, 0.664378, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
@@ -297,6 +297,7 @@ shape = SubResource("SphereShape3D_fc0e3")
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.65932)
 script = ExtResource("5_7jktm")
+rotation_speed = Vector2(0.005, 0.005)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_e8heu")
