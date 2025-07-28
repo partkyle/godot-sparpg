@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://vbpgk5xc4kt2"]
+[gd_scene load_steps=50 format=3 uid="uid://vbpgk5xc4kt2"]
 
 [ext_resource type="Script" uid="uid://4tbts5iaml8k" path="res://entities/planet/planet.gd" id="1_80nbo"]
 [ext_resource type="Shader" uid="uid://cmonbjnvu1osx" path="res://entities/planet/planet.gdshader" id="2_feb5d"]
@@ -8,17 +8,20 @@
 [ext_resource type="Script" uid="uid://1j332kbulav0" path="res://mouse_handler.gd" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://cdmhq7sxrmkuv" path="res://ui/ui.gd" id="6_ryrav"]
 [ext_resource type="Theme" uid="uid://cpddxkl67rvai" path="res://ui/ui_theme.tres" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://bawlbay0j8ixw" path="res://entities/laser/laser.tscn" id="9_vef74"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jktm"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hve3p"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Sky" id="Sky_ryrav"]
-sky_material = SubResource("ProceduralSkyMaterial_7jktm")
+[sub_resource type="Sky" id="Sky_mfdv2"]
+sky_material = SubResource("ProceduralSkyMaterial_hve3p")
 
-[sub_resource type="Environment" id="Environment_eow3j"]
-background_mode = 1
-sky = SubResource("Sky_ryrav")
+[sub_resource type="Environment" id="Environment_iotsf"]
+background_mode = 2
+sky = SubResource("Sky_mfdv2")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -151,15 +154,15 @@ material = SubResource("StandardMaterial3D_7sc4i")
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_eow3j")
+environment = SubResource("Environment_iotsf")
 
 [node name="Planet" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(-0.773404, 0, -0.633913, 0, 1, 0, 0.633913, 0, -0.773404, -1.91784, 0, 1.31947)
+transform = Transform3D(-0.773403, 0, -0.633914, 0, 1, 0, 0.633914, 0, -0.773403, -1.91784, 0, 1.31947)
 script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(0.706031, 0, 0.685476, 0, 1, 0, -0.685476, 0, 0.706031, 0, 0, 0)
+transform = Transform3D(-0.964412, 0, 0.197317, 0, 1, 0, -0.197317, 0, -0.964412, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -199,12 +202,12 @@ mesh = SubResource("BoxMesh_vef74")
 shape = SubResource("SphereShape3D_fc0e3")
 
 [node name="Planet2" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.32246)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 1.32246)
 script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(0.706031, 0, 0.685476, 0, 1, 0, -0.685476, 0, 0.706031, 0, 0, 0)
+transform = Transform3D(-0.964412, 0, 0.197317, 0, 1, 0, -0.197317, 0, -0.964412, 0, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -241,7 +244,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(0.706031, 0, 0.685476, 0, 1, 0, -0.685476, 0, 0.706031, 0, 0, 0)
+transform = Transform3D(-0.964412, 0, 0.197317, 0, 1, 0, -0.197317, 0, -0.964412, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -273,13 +276,13 @@ skeleton = NodePath("../../..")
 shape = SubResource("SphereShape3D_fc0e3")
 
 [node name="Sun" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
 script = ExtResource("1_80nbo")
 rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(-0.554101, 0, -0.836606, 0, 1, 0, 0.836606, 0, -0.554101, 0, 0, 0)
+transform = Transform3D(-0.990531, 0, -0.162887, 0, 1, 0, 0.162887, 0, -0.990531, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
@@ -297,12 +300,6 @@ shape = SubResource("SphereShape3D_e8heu")
 [node name="Camera3D" type="Camera3D" parent="Player"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
-
-[node name="Laser" type="RayCast3D" parent="Player"]
-target_position = Vector3(0, 0, -100)
-collide_with_areas = true
-collide_with_bodies = false
-debug_shape_custom_color = Color(0.876179, 0.18808, 0.403168, 1)
 
 [node name="MouseHandler" type="Node" parent="."]
 script = ExtResource("6_j5wjh")
@@ -325,3 +322,6 @@ offset_bottom = 40.0
 
 [node name="Velocity" type="Label" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
+
+[node name="Laser" parent="." instance=ExtResource("9_vef74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13698, 0, 3.38925)

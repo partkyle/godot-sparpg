@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bawlbay0j8ixw"]
+
+[ext_resource type="Script" uid="uid://bvgf1ykuwevln" path="res://entities/laser/laser.gd" id="1_43yiu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43yiu"]
+transparency = 1
+albedo_color = Color(0.275, 15.301, 20.765, 0.167)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_co2w2"]
+material = SubResource("StandardMaterial3D_43yiu")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oukfv"]
+height = 1.0
+radius = 0.1
+
+[node name="Laser" type="Node3D"]
+script = ExtResource("1_43yiu")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_co2w2")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+shape = SubResource("CylinderShape3D_oukfv")
+
+[connection signal="area_entered" from="Node3D/Area3D" to="." method="_on_area_3d_area_entered"]
