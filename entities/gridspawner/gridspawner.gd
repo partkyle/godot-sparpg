@@ -11,6 +11,8 @@ const r = 1
 var enemy_groups = {}
 
 func _process(delta: float) -> void:
+	assert(player, 'need to set player')
+
 	var chunk = Vector3i(player.global_position) / CHUNK_SIZE
 	for x in range(-r, r+1):
 		for y in range(-r, r+1):
