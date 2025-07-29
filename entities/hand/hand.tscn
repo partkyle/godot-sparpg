@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ytxhomuqwq3"]
+
+[ext_resource type="PackedScene" uid="uid://0s4pkcqm6vyr" path="res://n64_master_hand_smooth_ver/scene.gltf" id="1_25362"]
+
+[node name="Hand" instance=ExtResource("1_25362")]
