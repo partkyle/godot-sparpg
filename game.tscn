@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://vbpgk5xc4kt2"]
+[gd_scene load_steps=56 format=3 uid="uid://vbpgk5xc4kt2"]
 
 [ext_resource type="Script" uid="uid://4tbts5iaml8k" path="res://entities/planet/planet.gd" id="1_80nbo"]
 [ext_resource type="Shader" uid="uid://cif876ifgykl2" path="res://entities/sky/sky.gdshader" id="1_hve3p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://1j332kbulav0" path="res://mouse_handler.gd" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://cdmhq7sxrmkuv" path="res://ui/ui.gd" id="6_ryrav"]
 [ext_resource type="Theme" uid="uid://cpddxkl67rvai" path="res://ui/ui_theme.tres" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://bys8s0ais0da1" path="res://entities/throne/throne.tscn" id="8_mfdv2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hve3p"]
 
@@ -85,17 +86,17 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_j5wjh")
 size = Vector3(1, 0.505, 0.39)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xa8c5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfdv2"]
 albedo_texture = ExtResource("4_fc0e3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_5b14r"]
-material = SubResource("StandardMaterial3D_xa8c5")
+material = SubResource("StandardMaterial3D_mfdv2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnpwn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc2xo"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_36jdj"]
-material = SubResource("StandardMaterial3D_bnpwn")
+material = SubResource("StandardMaterial3D_lc2xo")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fc0e3"]
 
@@ -178,7 +179,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(-0.972867, 0, 0.172152, 0, 1, 0, -0.172152, 0, -0.972867, 0, 0, 0)
+transform = Transform3D(-0.859689, 0, 0.486197, 0, 1, 0, -0.486197, 0, -0.859689, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -229,7 +230,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(-0.972867, 0, 0.172152, 0, 1, 0, -0.172152, 0, -0.972867, 0, 0, 0)
+transform = Transform3D(-0.859689, 0, 0.486197, 0, 1, 0, -0.486197, 0, -0.859689, 0, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -266,7 +267,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(-0.972867, 0, 0.172152, 0, 1, 0, -0.172152, 0, -0.972867, 0, 0, 0)
+transform = Transform3D(-0.859689, 0, 0.486197, 0, 1, 0, -0.486197, 0, -0.859689, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -304,7 +305,7 @@ rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(0.917937, 0, -0.456928, 0, 1, 0, 0.456928, 0, 0.917937, 0, 0, 0)
+transform = Transform3D(-1.02052, 0, -0.100886, 0, 1, 0, 0.100886, 0, -1.02052, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
@@ -321,6 +322,7 @@ rotation_speed = Vector2(0.005, 0.005)
 shape = SubResource("SphereShape3D_e8heu")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.972443, 0.23314, 0, -0.23314, 0.972443, 0, 0.520461, 1.07314)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
 
@@ -328,6 +330,9 @@ shape = SubResource("SphereShape3D_e8heu")
 target_position = Vector3(0, 0, -20)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Throne" parent="Player" instance=ExtResource("8_mfdv2")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="MouseHandler" type="Node" parent="."]
 script = ExtResource("6_j5wjh")
