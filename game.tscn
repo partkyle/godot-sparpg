@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://vbpgk5xc4kt2"]
+[gd_scene load_steps=57 format=3 uid="uid://vbpgk5xc4kt2"]
 
 [ext_resource type="Script" uid="uid://4tbts5iaml8k" path="res://entities/planet/planet.gd" id="1_80nbo"]
 [ext_resource type="Shader" uid="uid://cif876ifgykl2" path="res://entities/sky/sky.gdshader" id="1_hve3p"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cdmhq7sxrmkuv" path="res://ui/ui.gd" id="6_ryrav"]
 [ext_resource type="Theme" uid="uid://cpddxkl67rvai" path="res://ui/ui_theme.tres" id="7_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bys8s0ais0da1" path="res://entities/throne/throne.tscn" id="8_mfdv2"]
+[ext_resource type="Script" uid="uid://cm01cf3nmyysq" path="res://ui/fullscreen_controller.gd" id="10_iotsf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hve3p"]
 
@@ -179,7 +180,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(-0.859689, 0, 0.486197, 0, 1, 0, -0.486197, 0, -0.859689, 0, 0, 0)
+transform = Transform3D(0.922637, 0, -0.352925, 0, 1, 0, 0.352925, 0, 0.922637, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -225,12 +226,12 @@ transform = Transform3D(0.32998, 2.88477e-08, -0.00366297, -2.88495e-08, 0.33, 3
 transform = Transform3D(-0.318866, 0, 0.0849986, 0, 0.33, 0, -0.0849986, 0, -0.318866, 0.513393, -0.45235, -0.620689)
 
 [node name="Planet2" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.32246)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 1.32246)
 script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(-0.859689, 0, 0.486197, 0, 1, 0, -0.486197, 0, -0.859689, 0, 0, 0)
+transform = Transform3D(0.922637, 0, -0.352925, 0, 1, 0, 0.352925, 0, 0.922637, 0, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -267,7 +268,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(-0.859689, 0, 0.486197, 0, 1, 0, -0.486197, 0, -0.859689, 0, 0, 0)
+transform = Transform3D(0.922637, 0, -0.352925, 0, 1, 0, 0.352925, 0, 0.922637, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -299,13 +300,13 @@ skeleton = NodePath("../../..")
 shape = SubResource("SphereShape3D_fc0e3")
 
 [node name="Sun" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
 script = ExtResource("1_80nbo")
 rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(-1.02052, 0, -0.100886, 0, 1, 0, 0.100886, 0, -1.02052, 0, 0, 0)
+transform = Transform3D(0.439274, 0, -0.92693, 0, 1, 0, 0.92693, 0, 0.439274, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
@@ -336,6 +337,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="MouseHandler" type="Node" parent="."]
 script = ExtResource("6_j5wjh")
+
+[node name="FullscreenController" type="Node" parent="."]
+script = ExtResource("10_iotsf")
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_ryrav")
