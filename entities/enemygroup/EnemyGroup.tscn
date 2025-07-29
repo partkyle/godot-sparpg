@@ -1,0 +1,271 @@
+[gd_scene load_steps=43 format=3 uid="uid://c1ceeb6f0mny"]
+
+[ext_resource type="Script" uid="uid://cojqsp8br3pks" path="res://entities/enemygroup/enemy_group.gd" id="1_vm7jg"]
+[ext_resource type="Script" uid="uid://4tbts5iaml8k" path="res://entities/planet/planet.gd" id="2_ruxed"]
+[ext_resource type="Shader" uid="uid://cmonbjnvu1osx" path="res://entities/planet/planet.gdshader" id="3_k58rf"]
+[ext_resource type="Texture2D" uid="uid://b6oyi1p2polxr" path="res://entities/planet/assets/bloodshot-eyes.png" id="4_83qre"]
+[ext_resource type="PackedScene" uid="uid://ytxhomuqwq3" path="res://entities/hand/hand.tscn" id="5_t5bym"]
+[ext_resource type="Texture2D" uid="uid://cd8jbgjrnw6jo" path="res://entities/planet/assets/TexturesForPlanets-TerrestrialWorldsPack/Terrestrial1.png" id="6_hsbn4"]
+
+[sub_resource type="Gradient" id="Gradient_7jktm"]
+offsets = PackedFloat32Array(0, 0.296296, 0.698413, 0.978836)
+colors = PackedColorArray(0, 0, 0, 1, 0.110736, 0, 0.874512, 1, 0.593399, 0.683127, 7.70092e-07, 1, 0.978005, 0.403699, 0.676539, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryrav"]
+noise_type = 3
+frequency = 0.0244
+fractal_octaves = 10
+fractal_lacunarity = 1.065
+fractal_gain = 1.4
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_cnpgn"]
+resource_local_to_scene = true
+seamless = true
+color_ramp = SubResource("Gradient_7jktm")
+noise = SubResource("FastNoiseLite_ryrav")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5wjh"]
+render_priority = 0
+shader = ExtResource("3_k58rf")
+shader_parameter/noise_texture = SubResource("NoiseTexture3D_cnpgn")
+
+[sub_resource type="SphereMesh" id="SphereMesh_redn1"]
+material = SubResource("ShaderMaterial_j5wjh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhcbd"]
+albedo_texture = ExtResource("4_83qre")
+
+[sub_resource type="SphereMesh" id="SphereMesh_kxouv"]
+material = SubResource("StandardMaterial3D_qhcbd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaj68"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fu6pl"]
+material = SubResource("StandardMaterial3D_vaj68")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5wjh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a54bq"]
+material = SubResource("StandardMaterial3D_j5wjh")
+size = Vector3(1, 0.505, 0.39)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfdv2"]
+albedo_texture = ExtResource("4_83qre")
+
+[sub_resource type="SphereMesh" id="SphereMesh_tjib4"]
+material = SubResource("StandardMaterial3D_mfdv2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc2xo"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3n67k"]
+material = SubResource("StandardMaterial3D_lc2xo")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5b1aq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hve3p"]
+albedo_texture = ExtResource("6_hsbn4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_n2taj"]
+material = SubResource("StandardMaterial3D_hve3p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iotsf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ngn4w"]
+material = SubResource("StandardMaterial3D_iotsf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_215e1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ma8rg"]
+material = SubResource("StandardMaterial3D_215e1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80cx4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_r5030"]
+material = SubResource("StandardMaterial3D_80cx4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvswv"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vqrs5"]
+material = SubResource("StandardMaterial3D_rvswv")
+
+[sub_resource type="Gradient" id="Gradient_j5wjh"]
+offsets = PackedFloat32Array(0, 0.243386, 0.592593, 0.804233, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.170125, 0.180691, 0.545615, 1, 0.74318, 0.533358, 0.255354, 1, 0.785277, 0.788011, 0.882432, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vef74"]
+noise_type = 3
+fractal_octaves = 10
+fractal_lacunarity = 1.38
+fractal_gain = 0.65
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1uh2m"]
+seamless = true
+color_ramp = SubResource("Gradient_j5wjh")
+noise = SubResource("FastNoiseLite_vef74")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb5m1"]
+albedo_texture = SubResource("NoiseTexture2D_1uh2m")
+
+[sub_resource type="SphereMesh" id="SphereMesh_wwv46"]
+material = SubResource("StandardMaterial3D_hb5m1")
+
+[sub_resource type="Gradient" id="Gradient_mfdv2"]
+offsets = PackedFloat32Array(0, 0.259259, 0.656085, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0.883333, 0, 1, 31.06, 39.773, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iotsf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_taqbl"]
+seamless = true
+color_ramp = SubResource("Gradient_mfdv2")
+noise = SubResource("FastNoiseLite_iotsf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sc4i"]
+albedo_texture = SubResource("NoiseTexture2D_taqbl")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dic0p"]
+material = SubResource("StandardMaterial3D_7sc4i")
+
+[node name="EnemyGroup" type="Node3D"]
+script = ExtResource("1_vm7jg")
+
+[node name="Planet" type="Node3D" parent="."]
+transform = Transform3D(0.566807, 0, -0.82385, 0, 1, 0, 0.82385, 0, 0.566807, -1.91784, 0, 1.31947)
+script = ExtResource("2_ruxed")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
+transform = Transform3D(0.779685, 0, -0.604641, 0, 1, 0, 0.604641, 0, 0.779685, 0, 0, 0)
+mesh = SubResource("SphereMesh_redn1")
+
+[node name="Eyes" type="Node3D" parent="Planet"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Left" type="MeshInstance3D" parent="Planet/Eyes"]
+transform = Transform3D(-0.196777, 0, -0.0357604, 0, 0.2, 0, 0.0357604, 0, -0.196777, 0.12701, 0.134559, 0.435338)
+mesh = SubResource("SphereMesh_kxouv")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Planet/Eyes/Left"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.1, 0.084, -0.442)
+mesh = SubResource("SphereMesh_fu6pl")
+skeleton = NodePath("../../..")
+
+[node name="Eyebrow" type="MeshInstance3D" parent="Planet/Eyes/Left"]
+transform = Transform3D(0.750111, 0.661312, 0, -0.661312, 0.750111, 0, 0, 2.98023e-08, 1, 0, 1.12533, 0)
+mesh = SubResource("BoxMesh_a54bq")
+
+[node name="Right" type="MeshInstance3D" parent="Planet/Eyes"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.134936, 0.134559, 0.435338)
+mesh = SubResource("SphereMesh_tjib4")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Planet/Eyes/Right"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.1, 0.084, 0.442)
+mesh = SubResource("SphereMesh_3n67k")
+skeleton = NodePath("../../..")
+
+[node name="Eyebrow" type="MeshInstance3D" parent="Planet/Eyes/Right"]
+transform = Transform3D(0.750111, 0.661312, 0, -0.661312, 0.750111, 0, 0, 2.98023e-08, 1, 0, 1.12533, 0)
+mesh = SubResource("BoxMesh_a54bq")
+
+[node name="Area3D" type="Area3D" parent="Planet"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Planet/Area3D"]
+shape = SubResource("SphereShape3D_5b1aq")
+
+[node name="LeftHand" parent="Planet" instance=ExtResource("5_t5bym")]
+transform = Transform3D(0.32998, 2.88477e-08, -0.00366297, -2.88495e-08, 0.33, 3.75323e-17, -0.00366297, -3.20224e-10, -0.32998, -0.379856, -0.45235, -0.813058)
+
+[node name="RightHand" parent="Planet" instance=ExtResource("5_t5bym")]
+transform = Transform3D(-0.318866, 0, 0.0849986, 0, 0.33, 0, -0.0849986, 0, -0.318866, 0.513393, -0.45235, -0.620689)
+
+[node name="Planet2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32246)
+script = ExtResource("2_ruxed")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
+transform = Transform3D(0.775467, 0, -0.610044, 0, 1, 0, 0.610044, 0, 0.775467, -0.00927782, 0, 0)
+mesh = SubResource("SphereMesh_n2taj")
+
+[node name="Eyes" type="Node3D" parent="Planet2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Left" type="MeshInstance3D" parent="Planet2/Eyes"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.12701, 0.134559, 0.435338)
+mesh = SubResource("SphereMesh_ngn4w")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Planet2/Eyes/Left"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.1, 0.084, 0.442)
+mesh = SubResource("SphereMesh_ma8rg")
+skeleton = NodePath("../../..")
+
+[node name="Right" type="MeshInstance3D" parent="Planet2/Eyes"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.134936, 0.134559, 0.435338)
+mesh = SubResource("SphereMesh_r5030")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Planet2/Eyes/Right"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.1, 0.084, 0.442)
+mesh = SubResource("SphereMesh_vqrs5")
+skeleton = NodePath("../../..")
+
+[node name="Area3D" type="Area3D" parent="Planet2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Planet2/Area3D"]
+shape = SubResource("SphereShape3D_5b1aq")
+
+[node name="Planet3" type="Node3D" parent="."]
+transform = Transform3D(0.734965, 0, 0.678105, 0, 1, 0, -0.678105, 0, 0.734965, 1.22015, 0, 1.32246)
+script = ExtResource("2_ruxed")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
+transform = Transform3D(0.779685, 0, -0.604641, 0, 1, 0, 0.604641, 0, 0.779685, 0, 0, 0)
+mesh = SubResource("SphereMesh_wwv46")
+
+[node name="Eyes" type="Node3D" parent="Planet3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Left" type="MeshInstance3D" parent="Planet3/Eyes"]
+transform = Transform3D(-0.196777, 0, -0.0357604, 0, 0.2, 0, 0.0357604, 0, -0.196777, 0.12701, 0.134559, 0.435338)
+mesh = SubResource("SphereMesh_kxouv")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Planet3/Eyes/Left"]
+transform = Transform3D(0.2, 0, -2.23517e-08, 0, 0.2, 0, 2.23517e-08, 0, 0.2, 0.1, 0.084, -0.414)
+mesh = SubResource("SphereMesh_fu6pl")
+skeleton = NodePath("../../..")
+
+[node name="Right" type="MeshInstance3D" parent="Planet3/Eyes"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.134936, 0.134559, 0.435338)
+mesh = SubResource("SphereMesh_tjib4")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Planet3/Eyes/Right"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.1, 0.084, 0.442)
+mesh = SubResource("SphereMesh_3n67k")
+skeleton = NodePath("../../..")
+
+[node name="Area3D" type="Area3D" parent="Planet3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Planet3/Area3D"]
+shape = SubResource("SphereShape3D_5b1aq")
+
+[node name="Sun" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_ruxed")
+rotation_speed = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
+transform = Transform3D(-0.869834, 0, 0.543843, 0, 1, 0, -0.543843, 0, -0.869834, 0, 0, 0)
+mesh = SubResource("SphereMesh_dic0p")
+
+[node name="Area3D" type="Area3D" parent="Sun"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sun/Area3D"]
+shape = SubResource("SphereShape3D_5b1aq")

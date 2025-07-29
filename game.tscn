@@ -12,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://cpddxkl67rvai" path="res://ui/ui_theme.tres" id="7_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bys8s0ais0da1" path="res://entities/throne/throne.tscn" id="8_mfdv2"]
 [ext_resource type="Script" uid="uid://cm01cf3nmyysq" path="res://ui/fullscreen_controller.gd" id="10_iotsf"]
+[ext_resource type="Script" uid="uid://bfdqupmj0msnu" path="res://entities/gridspawner/gridspawner.gd" id="10_iotsf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hve3p"]
 
@@ -43,11 +44,11 @@ sky = SubResource("Sky_lc2xo")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_7jktm"]
+[sub_resource type="Gradient" id="Gradient_iotsf"]
 offsets = PackedFloat32Array(0, 0.296296, 0.698413, 0.978836)
 colors = PackedColorArray(0, 0, 0, 1, 0.110736, 0, 0.874512, 1, 0.593399, 0.683127, 7.70092e-07, 1, 0.978005, 0.403699, 0.676539, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryrav"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lc2xo"]
 noise_type = 3
 frequency = 0.0244
 fractal_octaves = 10
@@ -57,83 +58,83 @@ fractal_gain = 1.4
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_eow3j"]
 resource_local_to_scene = true
 seamless = true
-color_ramp = SubResource("Gradient_7jktm")
-noise = SubResource("FastNoiseLite_ryrav")
+color_ramp = SubResource("Gradient_iotsf")
+noise = SubResource("FastNoiseLite_lc2xo")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5wjh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_215e1"]
 render_priority = 0
 shader = ExtResource("2_feb5d")
 shader_parameter/noise_texture = SubResource("NoiseTexture3D_eow3j")
 
 [sub_resource type="SphereMesh" id="SphereMesh_vef74"]
-material = SubResource("ShaderMaterial_j5wjh")
+material = SubResource("ShaderMaterial_215e1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhcbd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sc4i"]
 albedo_texture = ExtResource("4_fc0e3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_f1jbl"]
-material = SubResource("StandardMaterial3D_qhcbd")
+material = SubResource("StandardMaterial3D_7sc4i")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaj68"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80cx4"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_i2p71"]
-material = SubResource("StandardMaterial3D_vaj68")
+material = SubResource("StandardMaterial3D_80cx4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5wjh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8heu"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vef74"]
-material = SubResource("StandardMaterial3D_j5wjh")
+material = SubResource("StandardMaterial3D_e8heu")
 size = Vector3(1, 0.505, 0.39)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfdv2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvswv"]
 albedo_texture = ExtResource("4_fc0e3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_5b14r"]
-material = SubResource("StandardMaterial3D_mfdv2")
+material = SubResource("StandardMaterial3D_rvswv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc2xo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boyg6"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_36jdj"]
-material = SubResource("StandardMaterial3D_lc2xo")
+material = SubResource("StandardMaterial3D_boyg6")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fc0e3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hve3p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e36ub"]
 albedo_texture = ExtResource("3_fc0e3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_mfdv2"]
-material = SubResource("StandardMaterial3D_hve3p")
+material = SubResource("StandardMaterial3D_e36ub")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iotsf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb5m1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_lc2xo"]
-material = SubResource("StandardMaterial3D_iotsf")
+material = SubResource("StandardMaterial3D_hb5m1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_215e1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5p1p"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_7sc4i"]
-material = SubResource("StandardMaterial3D_215e1")
+material = SubResource("StandardMaterial3D_x5p1p")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80cx4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhcbd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_e8heu"]
-material = SubResource("StandardMaterial3D_80cx4")
+material = SubResource("StandardMaterial3D_qhcbd")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvswv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1jbl"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_boyg6"]
-material = SubResource("StandardMaterial3D_rvswv")
+material = SubResource("StandardMaterial3D_f1jbl")
 
-[sub_resource type="Gradient" id="Gradient_j5wjh"]
+[sub_resource type="Gradient" id="Gradient_vaj68"]
 offsets = PackedFloat32Array(0, 0.243386, 0.592593, 0.804233, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.170125, 0.180691, 0.545615, 1, 0.74318, 0.533358, 0.255354, 1, 0.785277, 0.788011, 0.882432, 1, 1, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vef74"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i2p71"]
 noise_type = 3
 fractal_octaves = 10
 fractal_lacunarity = 1.38
@@ -141,31 +142,31 @@ fractal_gain = 0.65
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hve3p"]
 seamless = true
-color_ramp = SubResource("Gradient_j5wjh")
-noise = SubResource("FastNoiseLite_vef74")
+color_ramp = SubResource("Gradient_vaj68")
+noise = SubResource("FastNoiseLite_i2p71")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb5m1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xa8c5"]
 albedo_texture = SubResource("NoiseTexture2D_hve3p")
 
 [sub_resource type="SphereMesh" id="SphereMesh_x5p1p"]
-material = SubResource("StandardMaterial3D_hb5m1")
+material = SubResource("StandardMaterial3D_xa8c5")
 
-[sub_resource type="Gradient" id="Gradient_mfdv2"]
+[sub_resource type="Gradient" id="Gradient_5b14r"]
 offsets = PackedFloat32Array(0, 0.259259, 0.656085, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0.883333, 0, 1, 31.06, 39.773, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_iotsf"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bnpwn"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lc2xo"]
 seamless = true
-color_ramp = SubResource("Gradient_mfdv2")
-noise = SubResource("FastNoiseLite_iotsf")
+color_ramp = SubResource("Gradient_5b14r")
+noise = SubResource("FastNoiseLite_bnpwn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sc4i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36jdj"]
 albedo_texture = SubResource("NoiseTexture2D_lc2xo")
 
 [sub_resource type="SphereMesh" id="SphereMesh_80cx4"]
-material = SubResource("StandardMaterial3D_7sc4i")
+material = SubResource("StandardMaterial3D_36jdj")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e8heu"]
 
@@ -180,7 +181,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(0.922637, 0, -0.352925, 0, 1, 0, 0.352925, 0, 0.922637, 0, 0, 0)
+transform = Transform3D(0.47135, 0, -0.861548, 0, 1, 0, 0.861548, 0, 0.47135, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -231,7 +232,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(0.922637, 0, -0.352925, 0, 1, 0, 0.352925, 0, 0.922637, 0, 0, 0)
+transform = Transform3D(0.465364, 0, -0.864806, 0, 1, 0, 0.864806, 0, 0.465364, -0.00927782, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -268,7 +269,7 @@ script = ExtResource("1_80nbo")
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(0.922637, 0, -0.352925, 0, 1, 0, 0.352925, 0, 0.922637, 0, 0, 0)
+transform = Transform3D(0.47135, 0, -0.861548, 0, 1, 0, 0.861548, 0, 0.47135, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -306,7 +307,7 @@ rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(0.439274, 0, -0.92693, 0, 1, 0, 0.92693, 0, 0.439274, 0, 0, 0)
+transform = Transform3D(-0.838836, 0, -0.593486, 0, 1, 0, 0.593486, 0, -0.838836, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
@@ -340,6 +341,11 @@ script = ExtResource("6_j5wjh")
 
 [node name="FullscreenController" type="Node" parent="."]
 script = ExtResource("10_iotsf")
+
+[node name="gridspawner" type="Node" parent="." node_paths=PackedStringArray("player", "target")]
+script = ExtResource("10_iotsf")
+player = NodePath("../Player")
+target = NodePath("..")
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_ryrav")

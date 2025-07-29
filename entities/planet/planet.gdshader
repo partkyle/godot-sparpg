@@ -10,6 +10,6 @@ void vertex() {
 
 void fragment() {
 	vec3 noise = texture(noise_texture, vertex_interpolated).rgb;
-	
+
 	ALBEDO = noise;
 }
