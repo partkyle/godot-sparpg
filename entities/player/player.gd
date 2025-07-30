@@ -69,6 +69,8 @@ func handle_rotation(d_pitch : float, d_yaw : float) -> void:
 	# If you want to rotate around the *object's local Y-axis*, change Vector3.UP to transform.basis.y
 	transform.basis = transform.basis.rotated(Vector3.UP, d_yaw)
 
+	transform.basis = transform.basis.orthonormalized()
+
 func handle_joystick_movement():
 	var axis_rot := Input.get_vector("look_left", "look_right", "look_up", "look_down") * stick_rotation_speed
 	
