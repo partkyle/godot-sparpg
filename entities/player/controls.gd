@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 
 	var decelerate := Input.get_action_strength("decelerate")
 	if decelerate > 0.0:
-		target.velocity = lerp(target.velocity, Vector3.ZERO, target.deceleration_intensity * delta)
+		target.velocity = lerp(target.velocity, Vector3.ZERO, deceleration_intensity * delta)
 	
 	if target.velocity.length_squared() < EPSILON:
 		target.velocity = Vector3.ZERO
