@@ -139,7 +139,7 @@ transform = Transform3D(0.566807, 0, -0.82385, 0, 1, 0, 0.82385, 0, 0.566807, -1
 script = ExtResource("2_ruxed")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(0.779685, 0, -0.604641, 0, 1, 0, 0.604641, 0, 0.779685, 0, 0, 0)
+transform = Transform3D(0.76172, 0, -0.626348, 0, 1, 0, 0.626348, 0, 0.76172, 0, 0, 0)
 mesh = SubResource("SphereMesh_redn1")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -189,7 +189,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32246)
 script = ExtResource("2_ruxed")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(0.775467, 0, -0.610044, 0, 1, 0, 0.610044, 0, 0.775467, -0.00927782, 0, 0)
+transform = Transform3D(0.757353, 0, -0.631625, 0, 1, 0, 0.631625, 0, 0.757353, -0.00927782, 0, 0)
 mesh = SubResource("SphereMesh_n2taj")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -225,7 +225,7 @@ transform = Transform3D(0.734965, 0, 0.678105, 0, 1, 0, -0.678105, 0, 0.734965, 
 script = ExtResource("2_ruxed")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(0.779685, 0, -0.604641, 0, 1, 0, 0.604641, 0, 0.779685, 0, 0, 0)
+transform = Transform3D(0.76172, 0, -0.626348, 0, 1, 0, 0.626348, 0, 0.76172, 0, 0, 0)
 mesh = SubResource("SphereMesh_wwv46")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -262,10 +262,12 @@ script = ExtResource("2_ruxed")
 rotation_speed = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(-0.869834, 0, 0.543843, 0, 1, 0, -0.543843, 0, -0.869834, 0, 0, 0)
+transform = Transform3D(0.37867, 0, -0.953593, 0, 1, 0, 0.953593, 0, 0.37867, 0, 0, 0)
 mesh = SubResource("SphereMesh_dic0p")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sun/Area3D"]
 shape = SubResource("SphereShape3D_5b1aq")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
