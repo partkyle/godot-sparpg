@@ -4,3 +4,5 @@
 
 # video files
 *.avi
+
+/.vscode

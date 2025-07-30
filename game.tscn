@@ -178,10 +178,11 @@ environment = SubResource("Environment_215e1")
 [node name="Planet" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(-0.773403, 0, -0.633914, 0, 1, 0, 0.633914, 0, -0.773403, -1.91784, 0, 1.31947)
 script = ExtResource("1_80nbo")
+spd = null
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet"]
-transform = Transform3D(-0.850851, 0, -0.489161, 0, 1, 0, 0.489161, 0, -0.850851, 0, 0, 0)
+transform = Transform3D(-0.957108, 0, -0.21122, 0, 1, 0, 0.21122, 0, -0.957108, 0, 0, 0)
 mesh = SubResource("SphereMesh_vef74")
 
 [node name="Eyes" type="Node3D" parent="Planet"]
@@ -229,10 +230,11 @@ transform = Transform3D(-0.318866, 0, 0.0849986, 0, 0.33, 0, -0.0849986, 0, -0.3
 [node name="Planet2" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.32246)
 script = ExtResource("1_80nbo")
+spd = null
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet2"]
-transform = Transform3D(-0.854237, 0, -0.483253, 0, 1, 0, 0.483253, 0, -0.854237, -0.00927782, 0, 0)
+transform = Transform3D(-0.958571, 0, -0.204581, 0, 1, 0, 0.204581, 0, -0.958571, -0.00927782, 0, 0)
 mesh = SubResource("SphereMesh_mfdv2")
 
 [node name="Eyes" type="Node3D" parent="Planet2"]
@@ -266,10 +268,11 @@ shape = SubResource("SphereShape3D_fc0e3")
 [node name="Planet3" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(-0.886442, 0, 0.46284, 0, 1, 0, -0.46284, 0, -0.886442, 1.22015, 0, 1.32246)
 script = ExtResource("1_80nbo")
+spd = null
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet3"]
-transform = Transform3D(-0.850851, 0, -0.489161, 0, 1, 0, 0.489161, 0, -0.850851, 0, 0, 0)
+transform = Transform3D(-0.957108, 0, -0.21122, 0, 1, 0, 0.21122, 0, -0.957108, 0, 0, 0)
 mesh = SubResource("SphereMesh_x5p1p")
 
 [node name="Eyes" type="Node3D" parent="Planet3"]
@@ -303,11 +306,12 @@ shape = SubResource("SphereShape3D_fc0e3")
 [node name="Sun" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_80nbo")
+spd = null
 rotation_speed = 0.2
 player = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sun"]
-transform = Transform3D(0.974803, 0, -0.325749, 0, 1, 0, 0.325749, 0, 0.974803, 0, 0, 0)
+transform = Transform3D(0.958424, 0, -0.387051, 0, 1, 0, 0.387051, 0, 0.958424, 0, 0, 0)
 mesh = SubResource("SphereMesh_80cx4")
 
 [node name="Area3D" type="Area3D" parent="Sun"]
@@ -318,7 +322,6 @@ shape = SubResource("SphereShape3D_fc0e3")
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.65932)
 script = ExtResource("5_7jktm")
-rotation_speed = Vector2(0.005, 0.005)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_e8heu")
