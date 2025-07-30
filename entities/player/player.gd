@@ -8,9 +8,11 @@ const EPSILON := 0.005
 @export var acceleration_intensity := 5.0
 @export var deceleration_intensity := 5.0
 @export var booster_speed := 1.0
-@export var rotation_speed := Vector2(0.02, 0.02)
+@export var rotation_speed := Vector2(0.5, 0.5)
 @export var stick_rotation_speed := rotation_speed * 2.0
 
+
+var mouse_rotation : Vector2
 
 func handle_melee():
 	if Input.is_action_just_pressed("melee"):
@@ -41,6 +43,11 @@ func _physics_process(delta: float) -> void:
 		global_position += velocity * delta
 	
 	handle_joystick_movement()
+	
+	if mouse_rotation:
+		mouse_rotation = mouse_rotation * rotation_speed * delta
+		handle_rotation(mouse_rotation.x, mouse_rotation.y)
+		mouse_rotation = Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and MouseHandler.is_mouse_captured():
@@ -48,11 +55,7 @@ func _input(event: InputEvent) -> void:
 		var mouse_delta_x = event.relative.x
 		var mouse_delta_y = event.relative.y
 
-		# Calculate rotation angles
-		var d_pitch = -mouse_delta_y * rotation_speed.y # Negative for intuitive Y-axis rotation (pitch)
-		var d_yaw = -mouse_delta_x * rotation_speed.x # Negative for intuitive X-axis rotation (yaw)
-		
-		handle_rotation(d_pitch, d_yaw)
+		mouse_rotation = Vector2(-mouse_delta_y, -mouse_delta_x)
 
 func handle_rotation(d_pitch : float, d_yaw : float) -> void:
 	# update y rotation sign by using the dot product to tell if the object is upside down
