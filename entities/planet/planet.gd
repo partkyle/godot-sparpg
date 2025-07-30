@@ -15,7 +15,7 @@ var t : SceneTreeTimer
 var velocity : Vector3
 
 func _ready() -> void:
-	t = get_tree().create_timer(10.0)
+	t = get_tree().create_timer(1.0)
 	t.timeout.connect(reset_speed)
 
 func reset_speed() -> void:
