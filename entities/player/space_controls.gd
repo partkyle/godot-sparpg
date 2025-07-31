@@ -1,15 +1,13 @@
 extends Node
 class_name Controls
 
-@onready var booster_timer: Timer = $BoosterTimer
-
-@export var EPSILON := 0.001
+@export var EPSILON := 0.005
 @export var acceleration_intensity := 5.0
 @export var deceleration_intensity := 5.0
+@export var booster_speed := 1.0
 @export var rotation_speed := Vector2(0.5, 0.5)
 @export var stick_rotation_speed := rotation_speed * 2.0
 @export var blink_distance := 10.0
-@export var booster_modifier := 5000.0
 
 var target : Node3D
 
@@ -17,12 +15,6 @@ var mouse_rotation := Vector2.ZERO
 
 func _ready() -> void:
 	target = get_parent()
-	
-	booster_timer.timeout.connect(reset_velocity)
-
-func reset_velocity():
-	if not Input.is_action_pressed("boost"):
-		target.velocity = Vector3.ZERO
 
 func handle_blink(direction: Vector3):
 	if not direction:
@@ -32,19 +24,15 @@ func handle_blink(direction: Vector3):
 		target.global_position += direction * blink_distance
 
 func _physics_process(delta: float) -> void:
-	var lateral = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var up_down = Input.get_axis("descend", "ascend")
-	
-	var direction = Vector3(lateral.x, up_down, lateral.y,)
-
-	if booster_timer.is_stopped() and Input.is_action_just_pressed("boost"):
-		booster_timer.start()
+	var direction = Input.get_vector("move_left", "move_right", "move_down", "move_up")
 
 	if direction.length_squared() > 0:
 		direction = direction.normalized()
-		target.velocity += (target.transform.basis * direction) * acceleration_intensity * delta
+		target.global_position += (target.transform.basis * Vector3(direction.x, direction.y, 0.)) * booster_speed * delta
 
-	handle_blink(direction)
+	handle_blink(Vector3(direction.x, direction.y, 0.))
+
+	target.velocity += (target.transform.basis * Vector3.FORWARD) * Input.get_action_strength("accelerate") * acceleration_intensity * delta
 
 	var decelerate := Input.get_action_strength("decelerate")
 	if decelerate > 0.0:
@@ -53,16 +41,9 @@ func _physics_process(delta: float) -> void:
 	if target.velocity.length_squared() < EPSILON:
 		target.velocity = Vector3.ZERO
 
-
-	
-	if Input.is_action_just_pressed("boost"):
-		booster_timer.start()
-	
-	if not booster_timer.is_stopped():
-		target.velocity = -target.basis.z * booster_modifier * delta
-		
 	if target.velocity.length_squared() > 0:
 		target.global_position += target.velocity * delta
+	
 	handle_joystick_movement()
 	
 	if mouse_rotation and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

@@ -14,6 +14,10 @@ script = ExtResource("1_sglur")
 script = ExtResource("2_bls4j")
 stick_rotation_speed = Vector2(1, 1)
 
+[node name="BoosterTimer" type="Timer" parent="Controls"]
+wait_time = 2.0
+one_shot = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_e8heu")
 

@@ -24,6 +24,9 @@ func _process(delta: float) -> void:
 	
 	if player:
 		look_at(player.global_position)
+		
+		if global_position.distance_squared_to(player.global_position) > pow(200, 2):
+			relocate()
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -33,3 +36,8 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity:
 		global_position += velocity * delta
+
+func relocate():
+	print('relocating')	
+	global_position = SphereSpawner.spawn_location(player)
+	velocity = Vector3.ZERO
