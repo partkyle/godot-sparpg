@@ -10,9 +10,6 @@ class_name Throne
 	$Ring6,
 ]
 
-func _ready() -> void:
-	print(rings)
-
 func _process(delta: float):
 	var i = 1
 	for r in rings:

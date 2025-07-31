@@ -1,13 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://vbpgk5xc4kt2"]
+[gd_scene load_steps=15 format=3 uid="uid://vbpgk5xc4kt2"]
 
 [ext_resource type="Shader" uid="uid://cif876ifgykl2" path="res://entities/sky/sky.gdshader" id="1_hve3p"]
-[ext_resource type="Script" uid="uid://bmganatsi74u5" path="res://entities/player/player.gd" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bux5keo3fe3ar" path="res://entities/player/player.tscn" id="2_eow3j"]
 [ext_resource type="Script" uid="uid://1j332kbulav0" path="res://mouse_handler.gd" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://cdmhq7sxrmkuv" path="res://ui/ui.gd" id="6_ryrav"]
 [ext_resource type="Theme" uid="uid://cpddxkl67rvai" path="res://ui/ui_theme.tres" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://b0ptxp55dm0h8" path="res://levels/sphere_spawner.gd" id="7_vef74"]
-[ext_resource type="Script" uid="uid://ijd0jcqf56d2" path="res://entities/player/controls.gd" id="8_215e1"]
-[ext_resource type="PackedScene" uid="uid://bys8s0ais0da1" path="res://entities/throne/throne.tscn" id="8_mfdv2"]
 [ext_resource type="Script" uid="uid://cm01cf3nmyysq" path="res://ui/fullscreen_controller.gd" id="10_lc2xo"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hve3p"]
@@ -40,35 +38,13 @@ sky = SubResource("Sky_lc2xo")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_e8heu"]
-
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_215e1")
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_eow3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.65932)
-script = ExtResource("5_7jktm")
-
-[node name="Controls" type="Node" parent="Player"]
-script = ExtResource("8_215e1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("SphereShape3D_e8heu")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.972443, 0.23314, 0, -0.23314, 0.972443, 0, 0.520461, 1.07314)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
-
-[node name="RayCast3D" type="RayCast3D" parent="Player"]
-target_position = Vector3(0, 0, -20)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="Throne" parent="Player" instance=ExtResource("8_mfdv2")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="MouseHandler" type="Node" parent="."]
 script = ExtResource("6_j5wjh")
@@ -98,4 +74,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Velocity" type="Label" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+
+[node name="EnemyCount" type="Label" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="KillCount" type="Label" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="despawn_enemy" from="SphereSpawner" to="SphereSpawner" method="_on_despawn_enemy"]
+[connection signal="despawn_enemy" from="SphereSpawner" to="UI" method="_on_sphere_spawner_despawn_enemy"]
+[connection signal="spawn_enemy" from="SphereSpawner" to="SphereSpawner" method="_on_spawn_enemy"]
+[connection signal="spawn_enemy" from="SphereSpawner" to="UI" method="_on_sphere_spawner_spawn_enemy"]

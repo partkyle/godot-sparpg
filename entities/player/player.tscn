@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bux5keo3fe3ar"]
+
+[ext_resource type="Script" uid="uid://bmganatsi74u5" path="res://entities/player/player.gd" id="1_sglur"]
+[ext_resource type="Script" uid="uid://ijd0jcqf56d2" path="res://entities/player/controls.gd" id="2_bls4j"]
+[ext_resource type="Script" uid="uid://ciqeg5bm5wtew" path="res://entities/player/camera_3d.gd" id="3_bls4j"]
+[ext_resource type="PackedScene" uid="uid://bys8s0ais0da1" path="res://entities/throne/throne.tscn" id="3_fkugw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e8heu"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_sglur")
+
+[node name="Controls" type="Node" parent="."]
+script = ExtResource("2_bls4j")
+stick_rotation_speed = Vector2(1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_e8heu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("3_bls4j")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -999999)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Throne" parent="." instance=ExtResource("3_fkugw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
