@@ -3,8 +3,8 @@
 [ext_resource type="Shader" uid="uid://cif876ifgykl2" path="res://entities/sky/sky.gdshader" id="1_hve3p"]
 [ext_resource type="PackedScene" uid="uid://bux5keo3fe3ar" path="res://entities/player/player.tscn" id="2_eow3j"]
 [ext_resource type="Script" uid="uid://1j332kbulav0" path="res://mouse_handler.gd" id="6_j5wjh"]
-[ext_resource type="Script" uid="uid://cdmhq7sxrmkuv" path="res://ui/ui.gd" id="6_ryrav"]
 [ext_resource type="Theme" uid="uid://cpddxkl67rvai" path="res://ui/ui_theme.tres" id="7_eow3j"]
+[ext_resource type="Script" uid="uid://b6toheqqm6mno" path="res://ui/debug_ui.gd" id="7_j5wjh"]
 [ext_resource type="Script" uid="uid://b0ptxp55dm0h8" path="res://levels/sphere_spawner.gd" id="7_vef74"]
 [ext_resource type="Script" uid="uid://cm01cf3nmyysq" path="res://ui/fullscreen_controller.gd" id="10_lc2xo"]
 
@@ -57,9 +57,7 @@ script = ExtResource("7_vef74")
 player = NodePath("../Player")
 target = NodePath("..")
 
-[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("6_ryrav")
-player = NodePath("../Player")
+[node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -68,22 +66,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("7_eow3j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+[node name="DebugUI" type="VBoxContainer" parent="UI/Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Velocity" type="Label" parent="UI/Control/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="EnemyCount" type="Label" parent="UI/Control/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="KillCount" type="Label" parent="UI/Control/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
+script = ExtResource("7_j5wjh")
 
 [connection signal="despawn_enemy" from="SphereSpawner" to="SphereSpawner" method="_on_despawn_enemy"]
 [connection signal="despawn_enemy" from="SphereSpawner" to="UI" method="_on_sphere_spawner_despawn_enemy"]

@@ -1,6 +1,8 @@
 extends Camera3D
+class_name Camera
 
 @export var speed := 20.0
+@onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 func _process(delta: float) -> void:
 	var direction = Vector3.ZERO

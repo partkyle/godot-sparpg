@@ -1,5 +1,5 @@
 extends Node
-class_name Controls
+class_name SpaceControls
 
 @export var EPSILON := 0.005
 @export var acceleration_intensity := 5.0

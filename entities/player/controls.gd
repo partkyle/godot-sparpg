@@ -20,6 +20,8 @@ func _ready() -> void:
 	
 	booster_timer.timeout.connect(reset_velocity)
 
+	DebugUi.add_debug_ui(&'player.velocity', func(): return "(%f,%f,%f)" % [target.velocity.x, target.velocity.y, target.velocity.z])
+
 func reset_velocity():
 	if not Input.is_action_pressed("boost"):
 		target.velocity = Vector3.ZERO
@@ -52,8 +54,6 @@ func _physics_process(delta: float) -> void:
 	
 	if target.velocity.length_squared() < EPSILON:
 		target.velocity = Vector3.ZERO
-
-
 	
 	if Input.is_action_just_pressed("boost"):
 		booster_timer.start()
